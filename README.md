@@ -76,7 +76,6 @@ pnpm build
 # Run tests
 pnpm test
 ```
-### 🎨 Alternative Minimal Version
 
 **Eder Borella** — Developer & Creator of Hugo Trier
 
