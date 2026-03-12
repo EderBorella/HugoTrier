@@ -76,4 +76,14 @@ pnpm build
 # Run tests
 pnpm test
 ```
+### 🎨 Alternative Minimal Version
+
+**Eder Borella** — Developer & Creator of Hugo Trier
+
+| Platform | Link |
+|----------|------|
+| 🐙 **GitHub** | [@EderBorella](https://github.com/EderBorella) |
+| 📧 **Email** | [ederlederlopesborella@gmail.com](mailto:ederlederlopesborella@gmail.com) |
+| 💼 **LinkedIn** | [/in/eder-borella/](https://linkedin.com/in/eder-borella/) |
+
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
