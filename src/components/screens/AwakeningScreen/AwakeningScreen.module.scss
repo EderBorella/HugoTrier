@@ -1,0 +1,297 @@
+// ============================================
+// LAYOUT BASE
+// ============================================
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  color: #e8e8e8;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+// ============================================
+// HEADER
+// ============================================
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: #f5f5f5;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #a0a0a0;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+// ============================================
+// NARRATIVE SESSION
+// ============================================
+
+.narrativeSection {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.narrativeBox {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.narrativeText {
+  margin: 0 0 1rem 0;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #e0e0e0;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  display: block;
+  font-size: 0.6rem;
+  color: #808080;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+}
+
+// ============================================
+// R.P SESSION
+// ============================================
+
+.prSection {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.prDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: rgba(212, 175, 55, 0.1);
+  border: 2px dashed rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+}
+
+.prLabel {
+  font-size: 0.875rem;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prValue {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d4af37;
+}
+
+.prHint {
+  font-size: 0.75rem;
+  color: #808080;
+  font-style: italic;
+}
+
+// ============================================
+// SKILLS
+// ============================================
+
+.skillsSection {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  color: #f5f5f5;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skillCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.skillName {
+  font-weight: 500;
+  color: #f5f5f5;
+}
+
+.skillCost {
+  font-size: 0.875rem;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.skillDesc {
+  font-size: 0.75rem;
+  color: #a0a0a0;
+}
+
+.buyButton {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 4px;
+  cursor: not-allowed;
+  opacity: 0.6;
+  font-size: 0.875rem;
+  
+  &:hover:not(:disabled) {
+    background-color: #d4af37;
+    color: #1a1a2e;
+  }
+}
+
+// ============================================
+// ATTRIBUTES
+// ============================================
+
+.attributesSection {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.attributesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.attributeBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.attrName {
+  font-size: 0.875rem;
+  color: #a0a0a0;
+  text-transform: uppercase;
+}
+
+.attrValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f5f5f5;
+}
+
+// ============================================
+// PROFICIENCES
+// ============================================
+
+.proficiencySection {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.profList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profItem {
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+// ============================================
+// MAIN ACTION
+// ============================================
+
+.actionArea {
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.startButton {
+  padding: 1rem 3rem;
+  font-size: 1.125rem;
+  background-color: #d4af37;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #e5c158;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.testButton {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #a0a0a0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
