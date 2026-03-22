@@ -7,6 +7,8 @@ import {
   calculateDayProgress,
   getTimePeriod,
 } from "../../utils/timeCalculator";
+import { allActions } from "../../data/actions/allActions";
+import { getAvailableActions } from "../../utils/actionFilter";
 
 // ============================================
 // BASIC SELECTORS (NOT MEMOIZED YET)
@@ -14,8 +16,13 @@ import {
 
 export const selectCurrentRun = (state: RootState) => state.game.currentRun;
 export const selectMeta = (state: RootState) => state.game.meta;
+export const selectCounters = (state: RootState) => state.game.counters;
 export const selectCurrentTime = (state: RootState) =>
   state.game.currentRun.currentTime;
+export const selectIsProcessing = (state: RootState) =>
+  state.game.isProcessingAction;
+export const selectCurrentActionId = (state: RootState) =>
+  state.game.currentActionId;
 
 // ============================================
 // MEMOIZED SELECTORS (createSelector)
@@ -48,6 +55,17 @@ export const selectTimePeriod = createSelector([selectCurrentTime], (time) =>
 export const selectIsEndOfDay = createSelector(
   [selectCurrentTime],
   (time) => time >= 960,
+);
+
+/**
+ * Available actions for the current area, filtered by requirements.
+ */
+export const selectAreaActions = createSelector(
+  [selectCurrentRun, selectCounters, selectMeta],
+  (currentRun, counters, meta) => {
+    const ctx = { currentRun, counters, meta };
+    return getAvailableActions(allActions, currentRun.currentArea, ctx);
+  },
 );
 
 /**

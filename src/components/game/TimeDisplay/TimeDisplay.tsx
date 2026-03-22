@@ -7,10 +7,6 @@ import {
   selectTimePeriod,
 } from "../../../features/game/gameSelectors";
 
-interface TimeDisplayProps {
-  time?: string;
-}
-
 /**
  * Time Display
  *
@@ -18,7 +14,7 @@ interface TimeDisplayProps {
  * TODO: Animate transitions between time periods (morning/afternoon/evening) and day progress bar.
  */
 
-export const TimeDisplay: React.FC<TimeDisplayProps> = () => {
+export const TimeDisplay: React.FC = () => {
   const time = useAppSelector(selectFormattedTime);
   const progress = useAppSelector(selectDayProgress);
   const period = useAppSelector(selectTimePeriod);

@@ -87,12 +87,15 @@ export interface MetaProgression {
   discoveredActions: string[];
   npcInteractionsTotal: Record<string, number>;
   proficiencies: Record<Proficiency, number>;
+  activeFlags: string[]; // Persistent flags (from PR purchases, permanent unlocks)
 }
 
 export interface GameState {
   currentRun: CurrentRun;
   counters: Counters;
   meta: MetaProgression;
+  isProcessingAction: boolean;
+  currentActionId: string | null;
 }
 
 // ============================================

@@ -53,12 +53,15 @@ const initialMeta: MetaProgression = {
     [Proficiency.ARCHERY]: 0,
     [Proficiency.MAGIC]: 0,
   },
+  activeFlags: [],
 };
 
 const initialState: GameState = {
   currentRun: initialCurrentRun,
   counters: initialCounters,
   meta: initialMeta,
+  isProcessingAction: false,
+  currentActionId: null,
 };
 
 // ============================================
@@ -139,11 +142,20 @@ const gameSlice = createSlice({
     },
 
     /**
-     * Add history flag
+     * Add run flag (resets each loop)
      */
     addFlag: (state, action: PayloadAction<string>) => {
       if (!state.currentRun.activeFlags.includes(action.payload)) {
         state.currentRun.activeFlags.push(action.payload);
+      }
+    },
+
+    /**
+     * Add meta flag (persists across loops, tied to PR purchases)
+     */
+    addMetaFlag: (state, action: PayloadAction<string>) => {
+      if (!state.meta.activeFlags.includes(action.payload)) {
+        state.meta.activeFlags.push(action.payload);
       }
     },
 
@@ -207,6 +219,10 @@ const gameSlice = createSlice({
 
       // Reseta contadores de run (mantém total)
       state.counters.run = {};
+
+      // Reseta estado de execução
+      state.isProcessingAction = false;
+      state.currentActionId = null;
     },
 
     /**
@@ -248,6 +264,22 @@ const gameSlice = createSlice({
     },
 
     /**
+     * Mark an action as being processed.
+     */
+    startAction: (state, action: PayloadAction<string>) => {
+      state.isProcessingAction = true;
+      state.currentActionId = action.payload;
+    },
+
+    /**
+     * Mark action processing as complete.
+     */
+    finishAction: (state) => {
+      state.isProcessingAction = false;
+      state.currentActionId = null;
+    },
+
+    /**
      * Carrega estado completo (para save/load)
      */
     loadGameState: (_state, action: PayloadAction<GameState>) => {
@@ -263,11 +295,14 @@ export const {
   incrementActionCounter,
   completeUniqueAction,
   addFlag,
+  addMetaFlag,
   updateRelationship,
   addItem,
   equipItem,
   resetRun,
   purchaseSkill,
+  startAction,
+  finishAction,
   loadGameState,
 } = gameSlice.actions;
 

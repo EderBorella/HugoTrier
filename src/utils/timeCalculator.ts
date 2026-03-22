@@ -56,7 +56,7 @@ export function calculateRealTime(gameMinutes: number): number {
   const calculated = gameMinutes * msPerGameMinute;
 
   // Limits for UX (minimum 3s, maximum 10s)
-  return Math.max(10000, Math.min(3000, calculated));
+  return Math.max(3000, Math.min(10000, calculated));
 }
 
 /**

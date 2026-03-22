@@ -3,7 +3,7 @@ import { setScreen } from "../../../features/navigation/navigationSlice";
 import { ScreenType } from "../../../types/game";
 import styles from "./AwakeningScreen.module.scss";
 
-export const AwakenigScreen: React.FC = () => {
+export const AwakeningScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const handleStartDay = () => {
     dispatch(setScreen(ScreenType.MAIN));

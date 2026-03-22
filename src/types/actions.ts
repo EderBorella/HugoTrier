@@ -90,6 +90,6 @@ export interface GameActionDefinition {
   areaId: string; // Where this action is available
   cost: ActionCost;
   rewards: ActionRewards;
-  requirements: ActionRequirementSet;
+  requirements: ActionRequirementSet[];
   narrativeTextKey: string; // i18n Text shown in narrative panel during execution
 }
