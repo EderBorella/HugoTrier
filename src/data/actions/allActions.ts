@@ -11,7 +11,7 @@ export const allActions: Record<ActionId, GameActionDefinition> = {
     areaId: AreaId.HOME,
     cost: { time: 15 },
     rewards: { realityPoints: 1, flags: ["AWAKE"] },
-    requirements: [{}],
+    requirements: [{ maxExecutionsThisRun: 1 }],
     narrativeTextKey: "narrative.wake_up",
   },
 
@@ -23,7 +23,13 @@ export const allActions: Record<ActionId, GameActionDefinition> = {
     areaId: AreaId.HOME,
     cost: { time: 5 },
     rewards: { flags: ["LOOKED_OUTSIDE"] },
-    requirements: [{ timeWindow: { min: 0, max: 180 } }],
+    requirements: [
+      {
+        timeWindow: { min: 15, max: 180 },
+        maxExecutionsThisRun: 1,
+        hidden: true,
+      },
+    ],
     narrativeTextKey: "narrative.look_window",
   },
 
@@ -35,7 +41,8 @@ export const allActions: Record<ActionId, GameActionDefinition> = {
     areaId: AreaId.HOME,
     cost: { time: 10 },
     rewards: {},
-    requirements: [],
+    requirements: [{ timeWindow: { min: 15, max: 960 }, hidden: true }],
     narrativeTextKey: "narrative.leave_home",
+    travelTo: AreaId.MARKET,
   },
 };

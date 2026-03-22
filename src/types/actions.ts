@@ -92,4 +92,5 @@ export interface GameActionDefinition {
   rewards: ActionRewards;
   requirements: ActionRequirementSet[];
   narrativeTextKey: string; // i18n Text shown in narrative panel during execution
+  travelTo?: string; // AreaId to move to on completion (for TRAVEL actions)
 }

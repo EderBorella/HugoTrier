@@ -7,10 +7,12 @@ import {
   addFlag,
   startAction,
   finishAction,
+  travelToArea,
 } from "../../../features/game/gameSlice";
 import { selectIsProcessing } from "../../../features/game/gameSelectors";
 import { ActionType } from "../../../types/actions";
 import type { GameActionDefinition } from "../../../types/actions";
+import type { AreaId } from "../../../types/game";
 import styles from "./ActionButton.module.scss";
 
 const ACTION_COLORS: Record<string, string> = {
@@ -57,6 +59,11 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
       for (const flag of definition.rewards.flags) {
         dispatch(addFlag(flag));
       }
+    }
+
+    // Travel
+    if (definition.travelTo) {
+      dispatch(travelToArea(definition.travelTo as AreaId));
     }
 
     dispatch(finishAction());
