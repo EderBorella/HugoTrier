@@ -1,6 +1,10 @@
 import React from "react";
 import { useAppSelector } from "../../../app/hooks";
-import { selectIsProcessing } from "../../../features/game/gameSelectors";
+import {
+  selectIsProcessing,
+  selectActionDuration,
+  selectCurrentNarrativeKey,
+} from "../../../features/game/gameSelectors";
 import { TimeDisplay } from "../../game/TimeDisplay/TimeDisplay";
 import { NarrativePanel } from "../../game/NarrativePanel/NarrativePanel";
 import { ActionList } from "../../game/ActionList/ActionList";
@@ -8,6 +12,8 @@ import styles from "./MainScreen.module.scss";
 
 export const MainScreen: React.FC = () => {
   const isProcessing = useAppSelector(selectIsProcessing);
+  const actionDuration = useAppSelector(selectActionDuration);
+  const narrativeKey = useAppSelector(selectCurrentNarrativeKey);
 
   return (
     <div className={styles.container}>
@@ -33,7 +39,11 @@ export const MainScreen: React.FC = () => {
 
         {/* MID - NARRATIVE PANEL */}
         <section className={styles.narrativeSection}>
-          <NarrativePanel isActive={isProcessing} />
+          <NarrativePanel
+            isActive={isProcessing}
+            duration={actionDuration ?? 0}
+            text={narrativeKey ?? undefined}
+          />
         </section>
 
         {/* BOTTOM: ACTION LIST */}

@@ -96,6 +96,7 @@ export interface GameState {
   meta: MetaProgression;
   isProcessingAction: boolean;
   currentActionId: string | null;
+  actionDuration: number | null;
 }
 
 // ============================================

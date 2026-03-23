@@ -52,11 +52,11 @@ export function formatGameTime(minutes: number): string {
  */
 
 export function calculateRealTime(gameMinutes: number): number {
-  const msPerGameMinute = (60 * 1000) / TIME_RATIO; // Milliseconds per game minute
-  const calculated = gameMinutes * msPerGameMinute;
+  // Scale: 500ms per game minute → 5min=2.5s, 10min=5s, 15min=7.5s, 30min=15s
+  const calculated = gameMinutes * 500;
 
-  // Limits for UX (minimum 3s, maximum 10s)
-  return Math.max(3000, Math.min(10000, calculated));
+  // Minimum 3s for very short actions
+  return Math.max(3000, calculated);
 }
 
 /**

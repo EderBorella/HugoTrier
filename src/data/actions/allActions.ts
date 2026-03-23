@@ -11,7 +11,7 @@ export const allActions: Record<ActionId, GameActionDefinition> = {
     areaId: AreaId.HOME,
     cost: { time: 15 },
     rewards: { realityPoints: 1, flags: ["AWAKE"] },
-    requirements: [{ maxExecutionsThisRun: 1 }],
+    requirements: [{ maxExecutionsThisRun: 1, hidden: true }],
     narrativeTextKey: "narrative.wake_up",
   },
 

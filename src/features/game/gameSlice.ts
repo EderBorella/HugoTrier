@@ -62,6 +62,7 @@ const initialState: GameState = {
   meta: initialMeta,
   isProcessingAction: false,
   currentActionId: null,
+  actionDuration: null,
 };
 
 // ============================================
@@ -223,6 +224,7 @@ const gameSlice = createSlice({
       // Reseta estado de execução
       state.isProcessingAction = false;
       state.currentActionId = null;
+      state.actionDuration = null;
     },
 
     /**
@@ -266,9 +268,13 @@ const gameSlice = createSlice({
     /**
      * Mark an action as being processed.
      */
-    startAction: (state, action: PayloadAction<string>) => {
+    startAction: (
+      state,
+      action: PayloadAction<{ actionId: string; duration: number }>,
+    ) => {
       state.isProcessingAction = true;
-      state.currentActionId = action.payload;
+      state.currentActionId = action.payload.actionId;
+      state.actionDuration = action.payload.duration;
     },
 
     /**
@@ -277,6 +283,7 @@ const gameSlice = createSlice({
     finishAction: (state) => {
       state.isProcessingAction = false;
       state.currentActionId = null;
+      state.actionDuration = null;
     },
 
     /**

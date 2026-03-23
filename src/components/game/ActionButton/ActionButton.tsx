@@ -1,18 +1,9 @@
 import React, { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  advanceTime,
-  incrementActionCounter,
-  completeUniqueAction,
-  addFlag,
-  startAction,
-  finishAction,
-  travelToArea,
-} from "../../../features/game/gameSlice";
+import { executeAction } from "../../../features/game/gameThunks";
 import { selectIsProcessing } from "../../../features/game/gameSelectors";
 import { ActionType } from "../../../types/actions";
 import type { GameActionDefinition } from "../../../types/actions";
-import type { AreaId } from "../../../types/game";
 import styles from "./ActionButton.module.scss";
 
 const ACTION_COLORS: Record<string, string> = {
@@ -39,34 +30,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
 
   const handleClick = useCallback(() => {
     if (isDisabled) return;
-
-    dispatch(startAction(definition.id));
-
-    // Advance time
-    if (definition.cost.time) {
-      dispatch(advanceTime(definition.cost.time));
-    }
-
-    // Increment counter
-    dispatch(incrementActionCounter(definition.id));
-
-    // Apply rewards
-    if (definition.type === ActionType.UNIQUE) {
-      dispatch(completeUniqueAction(definition.id));
-    }
-
-    if (definition.rewards.flags) {
-      for (const flag of definition.rewards.flags) {
-        dispatch(addFlag(flag));
-      }
-    }
-
-    // Travel
-    if (definition.travelTo) {
-      dispatch(travelToArea(definition.travelTo as AreaId));
-    }
-
-    dispatch(finishAction());
+    dispatch(executeAction(definition));
   }, [dispatch, definition, isDisabled]);
 
   const color = ACTION_COLORS[definition.type] ?? "#2c3e50";

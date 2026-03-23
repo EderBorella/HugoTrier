@@ -23,6 +23,15 @@ export const selectIsProcessing = (state: RootState) =>
   state.game.isProcessingAction;
 export const selectCurrentActionId = (state: RootState) =>
   state.game.currentActionId;
+export const selectActionDuration = (state: RootState) =>
+  state.game.actionDuration;
+export const selectCurrentNarrativeKey = createSelector(
+  [selectCurrentActionId],
+  (actionId) => {
+    if (!actionId) return null;
+    return allActions[actionId]?.narrativeTextKey ?? null;
+  },
+);
 
 // ============================================
 // MEMOIZED SELECTORS (createSelector)
